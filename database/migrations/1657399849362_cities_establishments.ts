@@ -6,21 +6,21 @@ export default class extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table
-        .integer('cities_id')
+        .integer('city_id')
         .unsigned()
         .notNullable()
         .references('id')
         .inTable('cities')
         .onDelete('CASCADE')
       table
-        .integer('establishments_id')
+        .integer('establishment_id')
         .unsigned()
         .notNullable()
         .references('id')
         .inTable('establishments')
         .onDelete('CASCADE')
       table.decimal('delivery_cost', 8, 2).notNullable()
-      table.primary(['cities_id', 'establishments_id'])
+      table.primary(['city_id', 'establishment_id'])
     })
   }
 
