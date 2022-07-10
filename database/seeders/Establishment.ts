@@ -5,10 +5,9 @@ import User from 'App/Models/User'
 export default class EstablishmentSeeder extends BaseSeeder {
   public async run() {
     const user = await User.create({
-      username: 'EstabelecimentoTeste',
       email: 'estabelecimentoteste@email.com',
-      password: '123456',
-      type: 'establishments',
+      password: '12345678',
+      type: 'estabelecimentos',
     })
 
     await Establishment.create({
