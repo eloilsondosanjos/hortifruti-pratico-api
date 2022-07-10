@@ -57,7 +57,7 @@ export default class AuthController {
 
     switch (userAuth.type) {
       case 'clientes':
-        const client = await Client.findByOrFail('userId', userAuth.id)
+        const client = await Client.findByOrFail('user_id', userAuth.id)
         data = {
           client_id: client.id,
           name: client.name,
@@ -66,7 +66,7 @@ export default class AuthController {
         }
         break
       case 'estabelecimentos':
-        const establishment = await Establishment.findByOrFail('userId', userAuth.id)
+        const establishment = await Establishment.findByOrFail('user_id', userAuth.id)
         data = {
           establishment: establishment.id,
           name: establishment.name,
@@ -77,7 +77,7 @@ export default class AuthController {
         }
         break
       case 'admins':
-        const admin = await Admin.findByOrFail('userId', userAuth.id)
+        const admin = await Admin.findByOrFail('user_id', userAuth.id)
         data = {
           admin_id: admin.id,
           name: admin.name,

@@ -5,8 +5,8 @@ export default class City extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column({ columnName: 'state_id' })
-  public stateId: number
+  @column()
+  public state_id: number
 
   @column()
   public name: string

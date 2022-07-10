@@ -18,7 +18,7 @@ export default class ClientsController {
     const client = await Client.create({
       name: payload.name,
       telefone: payload.telefone,
-      userId: user.id,
+      user_id: user.id,
     })
 
     return response.ok({
