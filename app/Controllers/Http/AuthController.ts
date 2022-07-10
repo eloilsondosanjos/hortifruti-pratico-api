@@ -13,10 +13,10 @@ export default class AuthController {
 
       let expira
       switch (user.type) {
-        case 'clients':
+        case 'clientes':
           expira = '2days'
           break
-        case 'establishments':
+        case 'estabelecimentos':
           expira = '1days'
           break
         case 'admins':
@@ -29,7 +29,7 @@ export default class AuthController {
 
       const token = await auth.use('api').attempt(email, password, {
         expiresIn: expira,
-        name: user.serialize().username,
+        name: user.serialize().email,
       })
 
       return response.created({ user: auth.user, token })
@@ -56,7 +56,7 @@ export default class AuthController {
     let data
 
     switch (userAuth.type) {
-      case 'clients':
+      case 'clientes':
         const client = await Client.findByOrFail('userId', userAuth.id)
         data = {
           client_id: client.id,
@@ -65,7 +65,7 @@ export default class AuthController {
           email: userAuth.email,
         }
         break
-      case 'establishments':
+      case 'estabelecimentos':
         const establishment = await Establishment.findByOrFail('userId', userAuth.id)
         data = {
           establishment: establishment.id,

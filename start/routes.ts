@@ -23,10 +23,12 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.group(() => {
   Route.group(() => {
     Route.get('/auth/me', 'AuthController.me')
+    Route.put('/clients', 'ClientsController.update')
   }).middleware('auth')
 
   Route.post('/login', 'AuthController.login')
   Route.post('/logout', 'AuthController.logout')
 
   Route.post('/users', 'UsersController.store')
+  Route.post('/clients', 'ClientsController.store')
 }).prefix('/api')
