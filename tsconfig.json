@@ -1,5 +1,4 @@
-{
-  "extends": "adonis-preset-ts/tsconfig.json",
+{  "extends": "adonis-preset-ts/tsconfig.json",
   "include": [
     "**/*"
   ],

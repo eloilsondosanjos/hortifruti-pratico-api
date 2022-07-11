@@ -24,6 +24,8 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/auth/me', 'AuthController.me')
     Route.put('/clients', 'ClientsController.update')
+
+    Route.resource('/addresses', 'AddressesController').apiOnly()
   }).middleware('auth')
 
   Route.post('/login', 'AuthController.login')
@@ -31,4 +33,7 @@ Route.group(() => {
 
   Route.post('/users', 'UsersController.store')
   Route.post('/clients', 'ClientsController.store')
+
+  Route.get('/cities', 'CitiesController.index')
+  Route.get('/cities/:id/establishments', 'CitiesController.establishmentsListByCity')
 }).prefix('/api')

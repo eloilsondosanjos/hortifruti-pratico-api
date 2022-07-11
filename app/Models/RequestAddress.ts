@@ -1,13 +1,11 @@
-import { DateTime } from 'luxon'
-import { BaseModel, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, hasOne, HasOne } from '@ioc:Adonis/Lucid/Orm'
 import City from './City'
 
-export default class Address extends BaseModel {
+export default class RequestAddress extends BaseModel {
+  public static table = 'requests_addresses'
+
   @column({ isPrimary: true })
   public id: number
-
-  @column()
-  public client_id: number
 
   @column()
   public city_id: number
@@ -26,12 +24,6 @@ export default class Address extends BaseModel {
 
   @column()
   public complement: string | null
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 
   @hasOne(() => City, {
     localKey: 'city_id',

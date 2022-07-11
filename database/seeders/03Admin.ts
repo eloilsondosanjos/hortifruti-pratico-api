@@ -12,7 +12,7 @@ export default class AdminSeeder extends BaseSeeder {
 
     await Admin.create({
       name: 'AdminTeste',
-      userId: user.id,
+      user_id: user.id,
     })
   }
 }
