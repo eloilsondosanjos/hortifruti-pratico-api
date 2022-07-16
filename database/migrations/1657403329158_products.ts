@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('image')
       table.decimal('price', 10, 2).notNullable()
       table.string('unity').notNullable()
-      table.string('position').notNullable()
+      table.integer('position').notNullable()
       table.boolean('active').notNullable().defaultTo(true)
       table
         .integer('category_id')
