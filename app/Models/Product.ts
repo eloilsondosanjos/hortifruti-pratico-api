@@ -24,7 +24,7 @@ export default class Product extends BaseModel {
   public unity: string
 
   @column()
-  public position: string
+  public position: number
 
   @column()
   public active: boolean
