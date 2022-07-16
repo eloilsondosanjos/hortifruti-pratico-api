@@ -21,19 +21,28 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
+  Route.post('/login', 'AuthController.login')
+  Route.post('/logout', 'AuthController.logout')
+
+  Route.post('/clients', 'ClientsController.store')
+
+  Route.get('/cities', 'CitiesController.index')
+  Route.get('/cities/:id/establishments', 'CitiesController.establishmentsListByCity')
+
+  Route.get('/establishments/:id', 'EstablishmentsController.show')
+
   Route.group(() => {
     Route.get('/auth/me', 'AuthController.me')
     Route.put('/clients', 'ClientsController.update')
 
     Route.resource('/addresses', 'AddressesController').apiOnly()
+
+    Route.get('/establishments/requests', 'EstablishmentsController.requests')
+
+    Route.post('/requests', 'RequestsController.store')
+    Route.get('/requests', 'RequestsController.index')
+    Route.get('/requests/:hash_id', 'RequestsController.show')
   }).middleware('auth')
 
-  Route.post('/login', 'AuthController.login')
-  Route.post('/logout', 'AuthController.logout')
-
   Route.post('/users', 'UsersController.store')
-  Route.post('/clients', 'ClientsController.store')
-
-  Route.get('/cities', 'CitiesController.index')
-  Route.get('/cities/:id/establishments', 'CitiesController.establishmentsListByCity')
 }).prefix('/api')
