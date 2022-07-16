@@ -33,7 +33,7 @@ export default class ClientsController {
     const payload = await request.validate(UpdateClientValidator)
     const userAuth = await auth.use('api').authenticate()
 
-    const updateTransaction = await Database.transaction()
+    const updateClientTransaction = await Database.transaction()
 
     try {
       const user = await User.findByOrFail('id', userAuth.id)
@@ -59,7 +59,7 @@ export default class ClientsController {
 
       await client.save()
 
-      await updateTransaction.commit()
+      await updateClientTransaction.commit()
 
       return response.ok({
         id: client.id,
@@ -68,7 +68,7 @@ export default class ClientsController {
         telefone: client.telefone,
       })
     } catch (error) {
-      await updateTransaction.rollback()
+      await updateClientTransaction.rollback()
       return response.badRequest('Something in the request is wrong')
     }
   }
