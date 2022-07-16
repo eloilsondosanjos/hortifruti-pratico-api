@@ -13,10 +13,13 @@ export default class Category extends BaseModel {
   public description: string
 
   @column()
-  public position: string
+  public position: number
 
   @column()
   public active: boolean
+
+  @column()
+  public establishment_id: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
